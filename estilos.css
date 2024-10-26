@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.contendorPrincipal{
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+
+.contenedorLogin{
+    border: solid 1px black;
+    border-radius: 15px;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contenedorLogin ion-icon{
+    font-size: 20px;
+    margin: 5px;
+}
+
+.contenedorLogin input{
+    width: 75%;
+    height: 25px;
+    border-radius: 25px;
+    margin-top: 5px;
+    padding: 10px;
+    font-size: auto;
+
+}
+
+.contenedorLogin #InicioSesion{
+    width: 75%;
+    height: 25px;
+    background-color: black;
+    color: aliceblue;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: auto;
+    margin-top: 10px;
+}
+
+.oculto{
+    display: none;
+}
