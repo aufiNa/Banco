@@ -1,23 +1,23 @@
 export class Cuentas{
-    #idcuenta;
-    #saldo;
-    static #cuentas = 0;
+    idcuenta;
+    saldo;
+    static acounts = 0;
     constructor(idcuenta, saldo){
-        this.#idcuenta = idcuenta;
-        this.#saldo = saldo;
-        Cuentas.#cuentas ++;
+        this.idcuenta = idcuenta;
+        this.saldo = saldo;
+        Cuentas.acounts ++;
     }
     get cuenta(){
-        return this.#idcuenta;
+        return this.idcuenta;
     }
     get saldo(){
-        return this.#saldo;
+        return this.saldo;
     }
     set saldo(nuevoSaldo){
-        this.#saldo = nuevoSaldo;
+        this.saldo = nuevoSaldo;
     }
-  static get cuentas(){
-      return this.#cuentas;
+  static get acounts(){
+      return this.acounts;
   }
-
+ 
 }
