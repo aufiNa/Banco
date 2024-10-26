@@ -8,17 +8,23 @@
     <script type="module" src="main.js"></script>
 </head>
 <body>
-    <div class = "contenedorPrincipal">
-        <div class="contenedorLogin">
+    <div class = "contenedorPrincipal " >
+        <div class="contenedorLogin ">
             <ion-icon name="person-circle-outline"></ion-icon>
             <input type="text" placeholder="Usuario" id="usuario">
             <ion-icon name="lock-closed-outline"></ion-icon>
             <input type="password" placeholder="Contraseña" id="contraseña">
             <button id="InicioSesion">Inicio Sesión</button>
-
-
         </div>
 
+        <div class = "ContenedorMenuPrincipal oculto">
+            <div id = "contenedorSelect"></div>
+            <input type="text" placeholder="Nombre" id="nombre" disabled>
+            <input type="text" placeholder="Apellido" id="apellido" disabled>
+            <button id="Transferencia">Transferencia</button>
+            <button id="CerrarSesion">Cerrar Sesión</button>
+            <button id = "agregarCuenta">Agregar Cuenta</button>
+        </div>
 
     </div>
 

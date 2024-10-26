@@ -5,14 +5,14 @@ export class Usuario{
     #email;
     #contrasenia;
     #Cuenta;
-    constructor(Usuario,nombre, apellido, email, contrasenia){
+    constructor(Usuario,nombre, apellido, email, contrasenia, cuenta){
         this.#Usuario = Usuario;
         this.#nombre = nombre;
         this.#apellido = apellido;
         this.#email = email;
         this.#contrasenia = contrasenia;
         this.#Cuenta = [];
-
+        this.#Cuenta.push(cuenta);
     }
     get Usuario(){
         return this.#Usuario;
@@ -37,5 +37,9 @@ export class Usuario{
     }
     set Usuario(NuevoUsuario){
         this.#Usuario = NuevoUsuario;
+    }
+
+    AgregarCuenta(cuenta){
+        this.#Cuenta.push(cuenta);
     }
 }
