@@ -5,12 +5,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
+    
 }
 
 body{
     position: relative;
     height: 100vh;
     width: 100%;
+    background-color: darkgray;
 }
 
 .contendorPrincipal{
@@ -25,7 +27,7 @@ body{
     border-radius: 15px;
     width: 200px;
     height: 200px;
-    background-color: rgb(255, 255, 255);
+    background-color:dimgrey;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +71,7 @@ body{
     border-radius: 15px;
     width: 200px;
     height: 300px;
-    background-color: rgb(255, 255, 255);
+    background-color: dimgrey;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -134,7 +136,7 @@ body{
     border-radius: 15px;
     width: 200px;
     height: 300px;
-    background-color: rgb(255, 255, 255);
+    background-color: dimgray;
     display: flex;
     flex-direction: column;
     justify-content: center;
