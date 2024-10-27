@@ -1,3 +1,4 @@
+import {Banco} from "./Banco.js";
 export class Usuario{
     Usuario;
     nombre;
@@ -42,4 +43,6 @@ export class Usuario{
     AgregarCuenta(cuenta){
         this.Cuenta.push(cuenta);
     }
+
+    
 }

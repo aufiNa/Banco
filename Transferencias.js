@@ -15,8 +15,8 @@ function recuperarUsuarioDesdeLocalStorage(nombreUsuario) {
         const datos = JSON.parse(usuarioJSON);
 
         // Verificamos si `cuentas` existe y es un arreglo antes de aplicar `.map`
-        const cuentas = Array.isArray(datos.cuentas)
-            ? datos.cuentas.map(cuentaData => new Cuentas(cuentaData.idcuenta, cuentaData.saldo))
+        const cuentas = Array.isArray(datos.Cuenta)
+            ? datos.Cuenta.map(cuentaData => new Cuentas(cuentaData.idcuenta, cuentaData.saldo))
             : []; // Si `cuentas` no existe, lo inicializamos como un arreglo vacío
 
         return new Usuario(datos.Usuario, datos.nombre, datos.apellido, datos.email, datos.contrasenia, cuentas);
@@ -34,9 +34,11 @@ cargarSelectCuentas();
 
 
 function cargarSelectCuentas() {
-
+    
         const selectCuentas = document.createElement("select");
         selectCuentas.id = "selectCuentas";
+        console.log(usuarioEncontrado.Cuenta[Cuentas.acounts - 1].length);
+        
         usuarioEncontrado.Cuenta.forEach(cuenta => {
             const option = document.createElement("option");
             option.value = cuenta.cuenta;  

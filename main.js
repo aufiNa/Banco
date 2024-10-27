@@ -1,17 +1,29 @@
 import {Usuario} from "./Usuarios.js";
-import {Cuentas} from "./Cuentas.js";
+import {Banco} from "./Banco.js";
 
 
 
 // Creacion de usuarios
-const usuario1 = new Usuario("usuario1","Juan", "Perez", "juanperez@gmail.com", "1234",new Cuentas(1, 1000) );
-const usuario2 = new Usuario("usuario2","Pedro", "Perez", "pedro@gmail.com", "2345", new Cuentas(2, 2000));
-const usuario3 = new Usuario("usuario3","Carlos", "Perez", "carlos@gmail.com", "3456",new Cuentas(3, 3000));
+const usuario1 = new Usuario("usuario1","Juan", "Perez", "juanperez@gmail.com", "1234",new Banco(1000) );
+const usuario2 = new Usuario("usuario2","Pedro", "Perez", "pedro@gmail.com", "2345", new Banco(2000));
+const usuario3 = new Usuario("usuario3","Carlos", "Perez", "carlos@gmail.com", "3456",new Banco (3000));
+
+
+
+console.log(usuario1.Cuenta);
+console.log(usuario2.Cuenta);  
+console.log(usuario3.Cuenta);
+guardarUsuarioEnLocalStorage("cuentas " + (Banco.acounts-3 ), usuario1.Cuenta);
+guardarUsuarioEnLocalStorage("cuentas " + (Banco.acounts -2  ), usuario2.Cuenta);
+guardarUsuarioEnLocalStorage("cuentas " + (Banco.acounts-1), usuario3.Cuenta);
+
+
 
 function guardarUsuarioEnLocalStorage(clave, usuario) {
     const usuarioJSON = JSON.stringify(usuario);
     localStorage.setItem(clave, usuarioJSON); // Usa su nombre de usuario como clave
 }
+
 
 
 
@@ -46,9 +58,13 @@ const contenedorLogin = document.querySelector(".contenedorLogin");
 const ContenedorMenuPrincipal = document.querySelector(".ContenedorMenuPrincipal");
 const nombre = document.getElementById("nombre");
 const apellido = document.getElementById("apellido");
+const nombre1 = document.getElementById("nombre1");
+const apellido1 = document.getElementById("apellido1");
 const Transferencia = document.getElementById("Transferencia");
 const CerrarSesion = document.getElementById("CerrarSesion");
 const agregarCuenta = document.getElementById("agregarCuenta");
+const ContenedorMenuTransferencias= document.querySelector(".ContenedorMenuTransferencias");
+const btntransferencia = document.getElementById("enviarTransferencia");
 
 let userfound = "";
 
@@ -66,7 +82,7 @@ function VerificarUsuario() {
     console.log("usuario encontrado", userfound);
     if (userfound) {
         guardarUsuarioEnLocalStorage("usuario", userfound);
-        console.log("Usuario correcto", recuperarUsuarioDesdeLocalStorage(userfound.nombre));
+        console.log("Usuario correcto", recuperarUsuarioDesdeLocalStorage("usuario", userfound).Usuario);
         alert("Bienvenido a Banco Programadores " + userfound.nombre);
         contenedorLogin.classList.add("oculto");
         ContenedorMenuPrincipal.classList.remove("oculto");
@@ -78,7 +94,13 @@ function VerificarUsuario() {
 }
 // Cambio de ventana de login a transferencias a travez de su boton
 Transferencia.addEventListener("click", ()=>{
-    window.location.href = "./Transferencias.html";
+
+    ContenedorMenuPrincipal.classList.add("oculto");
+    ContenedorMenuTransferencias.classList.remove("oculto");
+    nombre1.value = userfound.nombre;
+    apellido1.value = userfound.apellido;
+    cargarrSelectCuentas(); 
+    CargaCuentasTotales();
 })
 // Cierre de sesion a travez de su boton
 CerrarSesion.addEventListener("click", ()=>{
@@ -97,11 +119,11 @@ function AgregarCuenta(){
 
     if (usuarioEncontrado) {
         const saldo = prompt("Ingrese el saldo a agregar");
-        const nuevaCuenta = new Cuentas(Cuentas.acounts + 1, saldo);
+        const nuevaCuenta = new Banco(saldo);
         usuarioEncontrado.AgregarCuenta(nuevaCuenta);
         alert("Cuenta agregada");
         console.log(usuarioEncontrado.Cuenta);
-        guardarUsuarioEnLocalStorage("cuentas " + (Cuentas.acounts), nuevaCuenta);
+        guardarUsuarioEnLocalStorage("cuentas " + (Banco.acounts), nuevaCuenta);
          cargarSelectCuentas(); 
 
     } else {
@@ -127,8 +149,52 @@ function AgregarCuenta(){
         contenedorSelect.appendChild(selectCuentas);
     
 }
+function cargarrSelectCuentas() {
+    const usuarioEncontrado = Usuarioss.find(u => u.Usuario === userfound.Usuario);
+        const selectCuentas = document.createElement("select");
+        selectCuentas.id = "selectCuentas";
+        usuarioEncontrado.Cuenta.forEach(cuenta => {
+            const option = document.createElement("option");
+            option.value = cuenta.cuenta;  
+            option.textContent = `Cuenta: ${cuenta.cuenta} - Saldo:$${cuenta.saldo}`;
+            selectCuentas.appendChild(option);
+        });
 
-for (let i = -1; i < Cuentas.acounts.length; i++) {
-    guardarUsuarioEnLocalStorage("cuentas" + i, userfound.Cuenta[i]);
-    console.log(userfound.Cuenta);
+        const contenedorSelect = document.getElementById("contenedorSelecct");
+        contenedorSelect.innerHTML = ""; 
+        contenedorSelect.appendChild(selectCuentas);
+    
 }
+
+
+function CargaCuentasTotales() {
+    const contenedorSelect = document.getElementById("contenedorCuentasTotales");
+    contenedorSelect.innerHTML = ""; // Limpia cualquier contenido previo
+
+    // Crear un elemento select
+    const userrs = document.createElement("select");
+    userrs.id = "selectCuentas";
+
+    // Recorrer cada usuario y sus cuentas
+    Usuarioss.forEach(u => {
+        u.Cuenta.forEach(cuenta => {
+            const option = document.createElement("option");
+            option.value = cuenta.idcuenta;  
+            option.textContent = `Cuenta: ${cuenta.idcuenta} - Saldo: $${cuenta.saldo}`;
+            userrs.appendChild(option);
+        });
+    });
+
+    // Añadir el select al contenedor en el DOM
+    contenedorSelect.appendChild(userrs);
+}
+
+btntransferencia.addEventListener("click", ()=>{
+
+    const selectCuentas = document.getElementById("selectCuentas");
+    const selectCuentas1 = document.getElementById("selectCuentas1");
+    const cantidadTransferencia = document.getElementById("cantidadTransferencia");
+
+    
+
+})  

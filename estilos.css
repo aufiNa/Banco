@@ -101,7 +101,7 @@ body{
     margin-top: 10px;
 }
 
-#contenedorSelect {
+.ContenedorMenuPrincipal #contenedorSelect {
     width: auto;
     height: 35px;
     margin:10px;
@@ -113,7 +113,7 @@ body{
 }
 
 
-#contenedorSelect select {
+.ContenedorMenuPrincipal #contenedorSelect select {
     width: auto;
     height: auto;
     overflow: hidden;
@@ -123,6 +123,94 @@ body{
     background-color: transparent;
     border: none;
 }
+
+
+
+
+
+
+.ContenedorMenuTransferencias{
+    border: solid 1px black;
+    border-radius: 15px;
+    width: 200px;
+    height: 300px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ContenedorMenuTransferencias input{
+    width: 75%;
+    height: 25px;
+    border-radius: 25px;
+    margin:10px;
+    padding: 10px;
+    font-size: auto;
+
+}
+
+.ContenedorMenuTransferencias button{
+    width: 75%;
+    height: 25px;
+    background-color: black;
+    color: aliceblue;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: auto;
+    margin-top: 10px;
+}
+
+.ContenedorMenuTransferencias #contenedorSelecct {
+    width: auto;
+    height: 35px;
+    margin:10px;
+    padding: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: auto;
+}
+
+
+.ContenedorMenuTransferencias #contenedorSelecct select {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+}
+
+.ContenedorMenuTransferencias #contenedorCuentasTotales {
+    width: auto;
+    height: 35px;
+    margin:10px;
+    padding: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: auto;
+}
+
+.ContenedorMenuTransferencias #contenedorCuentasTotales select {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+}
+
 
 .oculto{
     display: none;
