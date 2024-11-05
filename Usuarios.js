@@ -1,4 +1,4 @@
-import {Banco} from "./Banco.js";
+
 export class Usuario{
     Usuario;
     nombre;

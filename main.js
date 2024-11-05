@@ -33,6 +33,7 @@ console.log(usuario3.Cuenta);
 guardarUsuarioEnLocalStorage("cuentas " + (Banco.acounts - 3), usuario1.Cuenta);
 guardarUsuarioEnLocalStorage("cuentas " + (Banco.acounts - 2), usuario2.Cuenta);
 guardarUsuarioEnLocalStorage("cuentas " + (Banco.acounts - 1), usuario3.Cuenta);
+guardarUsuarioEnLocalStorage("Cantidadcuentas", (Banco.acounts -1));
 
 function guardarUsuarioEnLocalStorage(clave, usuario) {
   const usuarioJSON = JSON.stringify(usuario);
@@ -48,7 +49,7 @@ function recuperarUsuarioDesdeLocalStorage(nombreUsuario) {
     // Verificamos si `cuentas` existe y es un arreglo antes de aplicar `.map`
     const cuentas = Array.isArray(datos.cuentas)
       ? datos.cuentas.map(
-          (cuentaData) => new Cuentas(cuentaData.idcuenta, cuentaData.saldo)
+          (cuentaData) => new Banco(cuentaData.idcuenta, cuentaData.saldo)
         )
       : []; // Si `cuentas` no existe, lo inicializamos como un arreglo vacío
 
@@ -66,7 +67,7 @@ function recuperarUsuarioDesdeLocalStorage(nombreUsuario) {
 }
 
 // Agregar usuarios a la lista de usuarios
-let Usuarioss = [usuario1, usuario2, usuario3];
+export let Usuarioss = [usuario1, usuario2, usuario3];
 
 //traer  elementos del html
 const usuario = document.getElementById("usuario");
@@ -87,7 +88,7 @@ const ContenedorMenuTransferencias = document.querySelector(
   ".ContenedorMenuTransferencias"
 );
 const btntransferencia = document.getElementById("enviarTransferencia");
-
+const cancelar = document.getElementById("cancelar");
 let userfound = "";
 
 // Funciones del boton inicio de sesion
@@ -119,14 +120,13 @@ function VerificarUsuario() {
   }
 }
 // Cambio de ventana de login a transferencias a travez de su boton
-Transferencia.addEventListener("click", () => {
+ Transferencia.addEventListener("click", () => {
   ContenedorMenuPrincipal.classList.add("oculto");
   ContenedorMenuTransferencias.classList.remove("oculto");
-  nombre1.value = userfound.nombre;
-  apellido1.value = userfound.apellido;
   cargarrSelectCuentas();
   CargaCuentasTotales();
-});
+
+}); 
 // Cierre de sesion a travez de su boton
 CerrarSesion.addEventListener("click", () => {
   contenedorLogin.classList.remove("oculto");
@@ -149,7 +149,9 @@ function AgregarCuenta() {
     usuarioEncontrado.AgregarCuenta(nuevaCuenta);
     alert("Cuenta agregada");
     console.log(usuarioEncontrado.Cuenta);
-    guardarUsuarioEnLocalStorage("cuentas " + Banco.acounts, nuevaCuenta);
+    guardarUsuarioEnLocalStorage("cuentas " + (Banco.acounts - 1), nuevaCuenta);
+    guardarUsuarioEnLocalStorage("usuario", usuarioEncontrado);
+    guardarUsuarioEnLocalStorage("Cantidadcuentas", (Banco.acounts -1));
     cargarSelectCuentas();
   } else {
     alert("Error: No se encontró el usuario en la sesión");
@@ -166,7 +168,7 @@ function cargarSelectCuentas() {
   usuarioEncontrado.Cuenta.forEach((cuenta) => {
     const option = document.createElement("option");
     option.value = cuenta.cuenta;
-    option.textContent = `Cuenta: ${cuenta.cuenta} - Saldo:$${cuenta.saldo}`;
+    option.textContent = `Cuenta: ${cuenta.cuenta}  Saldo: $${cuenta.saldo} ${userfound.nombre} ${userfound.apellido}`;
     selectCuentas.appendChild(option);
   });
 
@@ -174,7 +176,7 @@ function cargarSelectCuentas() {
   contenedorSelect.innerHTML = "";
   contenedorSelect.appendChild(selectCuentas);
 }
-function cargarrSelectCuentas() {
+ function cargarrSelectCuentas() {
   const usuarioEncontrado = Usuarioss.find(
     (u) => u.Usuario === userfound.Usuario
   );
@@ -183,7 +185,7 @@ function cargarrSelectCuentas() {
   usuarioEncontrado.Cuenta.forEach((cuenta) => {
     const option = document.createElement("option");
     option.value = cuenta.cuenta;
-    option.textContent = `Cuenta: ${cuenta.cuenta} - Saldo:$${cuenta.saldo}`;
+    option.textContent = `Cuenta: ${cuenta.cuenta} Saldo: $${cuenta.saldo} ${userfound.nombre} ${userfound.apellido}`;
     selectCuentas.appendChild(option);
   });
 
@@ -205,7 +207,7 @@ function CargaCuentasTotales() {
     u.Cuenta.forEach((cuenta) => {
       const option = document.createElement("option");
       option.value = cuenta.idcuenta;
-      option.textContent = `Cuenta: ${cuenta.idcuenta} - Saldo: $${cuenta.saldo}`;
+      option.textContent = `Cuenta: ${cuenta.idcuenta}  Saldo: $${cuenta.saldo}  ${u.nombre}  ${u.apellido}`;
       userrs.appendChild(option);
     });
   });
@@ -267,9 +269,27 @@ btntransferencia.addEventListener("click", () => {
     destino.saldo = parseInt(destino.saldo) + parseInt(cantidadTransferencia);
     console.log(destino.saldo);
     alert("Transferencia exitosa");
-  }
 
-  if (err != "a") {
-    alert("Error");
+    ContenedorMenuPrincipal.classList.remove("oculto");
+    ContenedorMenuTransferencias.classList.add("oculto");
+    cargarSelectCuentas();
+    cargarrSelectCuentas();
+    CargaCuentasTotales();
   }
+if (idcuenta1 === idcuenta2)  {
+  alert("Error: No se puede transferir a su mismo cuenta");
+} 
+if (cantidadTransferencia === "") {
+  alert("Error: Debe ingresar una cantidad");
+}
+
 });
+
+cancelar.addEventListener("click", () => {
+    ContenedorMenuPrincipal.classList.remove("oculto");
+    ContenedorMenuTransferencias.classList.add("oculto");
+    cargarSelectCuentas();
+    cargarrSelectCuentas();
+    CargaCuentasTotales();
+});
+ 

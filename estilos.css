@@ -5,14 +5,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
-    
+
 }
 
 body{
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: darkgray;
+    background-color:rgb(232, 178, 240);
 }
 
 .contendorPrincipal{
@@ -23,11 +23,11 @@ body{
 }
 
 .contenedorLogin{
-    border: solid 1px black;
+    border: solid 2px rgb(102, 66, 168);
     border-radius: 15px;
-    width: 200px;
-    height: 200px;
-    background-color:dimgrey;
+    width: 500px;
+    height: 400px;
+    background-color:rgb(151, 100, 247);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,39 +39,48 @@ body{
 }
 
 .contenedorLogin ion-icon{
-    font-size: 20px;
+    font-size: 35px;
     margin: 5px;
+    color: whitesmoke;
 }
 
 .contenedorLogin input{
+    border: none;
     width: 75%;
-    height: 25px;
+    height: 35px;
     border-radius: 25px;
     margin-top: 5px;
     padding: 10px;
-    font-size: auto;
+    font-size: 17px;
 
 }
 
 .contenedorLogin #InicioSesion{
+    border: none;
     width: 75%;
-    height: 25px;
-    background-color: black;
-    color: aliceblue;
+    height: 40px;
+    background-color: rgb(232, 178, 240);
+    color: rgba(255, 255, 255, 0.699);
     cursor: pointer;
     border-radius: 50px;
-    font-size: auto;
-    margin-top: 10px;
+    font-size: 17px;
+    margin-top: 20px;
+    
+}
+
+.contenedorLogin #InicioSesion:hover{
+    background-color: rgb(221, 146, 233);
+    color: black;
 }
 
 
 
 .ContenedorMenuPrincipal{
-    border: solid 1px black;
+    border: solid 2px rgb(102, 66, 168);
     border-radius: 15px;
-    width: 200px;
-    height: 300px;
-    background-color: dimgrey;
+    width: 500px;
+    height: 400px;
+    background-color:rgb(151, 100, 247);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,24 +92,30 @@ body{
 }
 
 .ContenedorMenuPrincipal input{
+    border: none;
     width: 75%;
-    height: 25px;
+    height: 35px;
     border-radius: 25px;
-    margin:10px;
+    margin-top: 5px;
     padding: 10px;
-    font-size: auto;
+    font-size: 17px;
 
 }
 
 .ContenedorMenuPrincipal button{
+    border: none;
     width: 75%;
-    height: 25px;
-    background-color: black;
-    color: aliceblue;
+    height: 40px;
+    background-color: rgb(232, 178, 240);
+    color: rgba(255, 255, 255, 0.699);
     cursor: pointer;
     border-radius: 50px;
-    font-size: auto;
-    margin-top: 10px;
+    font-size: 17px;
+    margin-top: 20px;
+}
+.ContenedorMenuPrincipal button:hover{
+    background-color: rgb(221, 146, 233);
+    color: black;
 }
 
 .ContenedorMenuPrincipal #contenedorSelect {
@@ -120,10 +135,11 @@ body{
     height: auto;
     overflow: hidden;
     cursor: pointer;
+    padding: 5px;
     border-radius: 50px;
     font-size: 15px;
     background-color: transparent;
-    border: none;
+    border: 2px solid rgb(102, 66, 168);
 }
 
 
@@ -132,11 +148,11 @@ body{
 
 
 .ContenedorMenuTransferencias{
-    border: solid 1px black;
+    border: solid 2px rgb(102, 66, 168);
     border-radius: 15px;
-    width: 200px;
-    height: 300px;
-    background-color: dimgray;
+    width: 500px;
+    height: 400px;
+    background-color:rgb(151, 100, 247);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -148,24 +164,30 @@ body{
 }
 
 .ContenedorMenuTransferencias input{
+    border: none;
     width: 75%;
-    height: 25px;
+    height: 35px;
     border-radius: 25px;
-    margin:10px;
+    margin-top: 5px;
     padding: 10px;
-    font-size: auto;
+    font-size: 17px;
 
 }
 
 .ContenedorMenuTransferencias button{
+    border: none;
     width: 75%;
-    height: 25px;
-    background-color: black;
-    color: aliceblue;
+    height: 40px;
+    background-color: rgb(232, 178, 240);
+    color: rgba(255, 255, 255, 0.699);
     cursor: pointer;
     border-radius: 50px;
-    font-size: auto;
-    margin-top: 10px;
+    font-size: 17px;
+    margin-top: 20px;
+}
+.ContenedorMenuTransferencias button:hover{
+    background-color: rgb(221, 146, 233);
+    color: black;
 }
 
 .ContenedorMenuTransferencias #contenedorSelecct {
@@ -188,7 +210,7 @@ body{
     border-radius: 50px;
     font-size: 15px;
     background-color: transparent;
-    border: none;
+    border: 2px solid rgb(102, 66, 168);
 }
 
 .ContenedorMenuTransferencias #contenedorCuentasTotales {
@@ -210,7 +232,7 @@ body{
     border-radius: 50px;
     font-size: 15px;
     background-color: transparent;
-    border: none;
+    border: 2px solid rgb(102, 66, 168);
 }
 
 
